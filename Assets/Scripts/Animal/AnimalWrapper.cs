@@ -7,10 +7,10 @@ public class AnimalWrapper : MonoBehaviour
     public GameObject boatObject;
     public GameObject tetrisObject;
     private Animator boatAnimator;
-    private Item animal;
+    public Animal animal;
     private bool isTetris;
 
-    public void Init(Item animal){
+    public void Init(Animal animal){
         this.animal = animal;
         boatAnimator = boatObject.GetComponent<Animator>();
 
