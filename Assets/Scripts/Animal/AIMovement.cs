@@ -91,7 +91,8 @@ namespace Mob
          */
         void Fall()
         {
-            float boatAngleClamped = (Mathf.Clamp(Mathf.Abs(boatAngle), 65.0f, 90.0f) - 65.0f) / (25.0f / Mathf.Abs(MovementSpeed));
+            float killingAngle = ShipManager.FinalRotation;
+            float boatAngleClamped = (Mathf.Clamp(Mathf.Abs(boatAngle), killingAngle, 90.0f) - killingAngle) / ((90.0f - killingAngle) / Mathf.Abs(MovementSpeed));
 
             MovementSpeed += (Time.deltaTime * fallingDirection) * boatAngleClamped;
             MovementSpeed *= (1.0f + fallingSpeed * Time.deltaTime);
@@ -107,7 +108,6 @@ namespace Mob
             if (timeToWait < 0.0f)
             {
                 CurrentState = State.Moving;
-                Debug.Log(CurrentState);
                 if (Random.Range(0, 2) == 1)
                     MovementSpeed = -MovementSpeed;
             }
@@ -121,7 +121,6 @@ namespace Mob
             if (currentFloor == ShipManager.Ladders.Length)
             {
                 CurrentState = State.Moving;
-                Debug.Log(CurrentState);
                 return;
             }
 
@@ -137,14 +136,12 @@ namespace Mob
                 if (ladder.InUse)
                 {
                     CurrentState = State.Waiting;
-                    Debug.Log(CurrentState);
                 }
                 else
                 {
                     CurrentState = State.Climbing;
                     ShipManager.SetLadderClimbing(currentFloor);
                     currentFloor++;
-                    Debug.Log(CurrentState);
                 }
             }
         }
@@ -158,7 +155,6 @@ namespace Mob
             {
                 ShipManager.SetLadderClimbing(currentFloor);
                 CurrentState = State.Climbing;
-                Debug.Log(CurrentState);
             }
         }
 
@@ -171,25 +167,23 @@ namespace Mob
             if (transform.localPosition.y > -(ShipManager.Size.y / 2.0f) + 0.5f + currentFloor * ShipManager.FloorHeight)
             {
                 CurrentState = State.Moving;
-                Debug.Log(CurrentState);
             }
         }
 
         void CheckForFall()
         {
-            if (boatAngle > 65.0f)
+            Debug.Log(ShipManager.FinalRotation);
+            if (boatAngle >= ShipManager.FinalRotation)
             {
                 fallingDirection = -1.0f;
                 MovementSpeed = -0.1f;
                 CurrentState = State.Falling;
-                Debug.Log(CurrentState);
             }
-            else if (boatAngle < -65.0f)
+            else if (boatAngle <= -ShipManager.FinalRotation)
             {
                 fallingDirection = 1.0f;
                 MovementSpeed = 0.1f;
                 CurrentState = State.Falling;
-                Debug.Log(CurrentState);
             }
         }
 
@@ -205,7 +199,6 @@ namespace Mob
             {
                 timeToWait = Random.Range(0.5f, 3.0f);
                 CurrentState = State.Stopped;
-                Debug.Log(CurrentState);
             }
         }
 
@@ -220,7 +213,6 @@ namespace Mob
             if (Random.Range(0.0f, 1.0f) > 0.85f)
             {
                 CurrentState = State.Seeking;
-                Debug.Log(CurrentState);
             }
         }
     }

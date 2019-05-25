@@ -13,6 +13,7 @@ namespace Ship
         public static Vector2 Size;
         public static float FloorHeight;
         public static float FloorsNumber;
+        public static float FinalRotation;
 
         public static void SetLadderClimbing(int index)
         {
