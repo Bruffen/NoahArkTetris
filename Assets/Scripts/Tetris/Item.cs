@@ -9,6 +9,7 @@ public class Item : ScriptableObject {
     [Range(0.1f, 5f)]
     public float speedMultiplier = 1.0f;
     public GameObject tetrisGameObject;
+    public int scoreValue;
 
     [HideInInspector]
     public bool[] shapeArray;
