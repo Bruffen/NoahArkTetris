@@ -4,9 +4,17 @@ using UnityEngine;
 
 public enum AnimalType : byte
 {
-    pig,
-    cat,
-    monkey,
-    lion,
+    ant,
     bear,
+    camel,
+    cat,
+    cow,
+    dog,
+    elephant,
+    horse,
+    lion,
+    monkey,
+    pig,
+    snake,
+    spider,
 }
