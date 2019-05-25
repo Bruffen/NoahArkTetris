@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private Action GameStateUpdate;
     private static int playerScore;
 
+    public GameObject boat;
+
     void Awake()
     {
         if(Instance == null){
@@ -20,10 +22,6 @@ public class GameManager : MonoBehaviour
         else{
             Destroy(this.gameObject);
         }
-    }
-    void OnEnable()
-    {
-        GameStart();        
     }
 
     void Update()
@@ -35,6 +33,7 @@ public class GameManager : MonoBehaviour
         timeLeft = MatchTime;
         playerScore = 0;
         GameStateUpdate += GameRunningUpdate;
+        boat.SetActive(true);
     }
 
     private void GameRunningUpdate(){

@@ -47,6 +47,7 @@ public class CanvasManager : MonoBehaviour
                 break;
             case GameState.Ingame:
                 currentTransform = Game;
+                GameManager.Instance.GameStart();
                 break;
             case GameState.End:
                 currentTransform = End;

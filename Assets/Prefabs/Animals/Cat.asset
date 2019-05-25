@@ -16,6 +16,7 @@ MonoBehaviour:
   boatGameObject: {fileID: 0}
   speedMultiplier: 1
   tetrisGameObject: {fileID: 0}
+  scoreValue: 10
   shapeArray: 
   height: 0
   width: 0
