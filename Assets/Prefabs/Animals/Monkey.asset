@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
+  m_Name: Monkey
+  m_EditorClassIdentifier: 
+  animalType: 9
+  boatAnimator: {fileID: 9100000, guid: c43f8bbefa897a547a0b99a875cbe9fa, type: 2}
+  speedMultiplier: 2
+  tetrisSprite: {fileID: 0}
+  tetrisColor: {r: 0, g: 0, b: 0, a: 0}
+  scoreValue: 15
+  shapeArray: 00010101
+  height: 2
+  width: 2
