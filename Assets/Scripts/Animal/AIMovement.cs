@@ -15,11 +15,12 @@ namespace Mob
         private float boatAngle;
         private float fallingDirection = 0.0f;
         private float fallingSpeed = 2.0f;
+        private Transform eyes;
         private float timeToWait;
         private float stopTimer;
         private float seekTimer;
 
-        void Start()
+        void Awake()
         {
             CurrentState = State.Moving;
             transformBoat = transform.parent.transform;
@@ -30,6 +31,7 @@ namespace Mob
                 -(ShipManager.Size.y / 2.0f) + 0.5f + currentFloor * ShipManager.FloorHeight);
             stopTimer = 0.0f;
             seekTimer = 0.0f;
+            eyes = transform.Find("Eyes");
         }
 
         void Update()
@@ -178,12 +180,14 @@ namespace Mob
                 fallingDirection = -1.0f;
                 MovementSpeed = -0.1f;
                 CurrentState = State.Falling;
+                eyes.gameObject.SetActive(true);
             }
             else if (boatAngle <= -ShipManager.FinalRotation)
             {
                 fallingDirection = 1.0f;
                 MovementSpeed = 0.1f;
                 CurrentState = State.Falling;
+                eyes.gameObject.SetActive(true);
             }
         }
 
