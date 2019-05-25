@@ -10,6 +10,7 @@ namespace Ship
         public int LadderCooldown = 500;
         public Vector2 Size;
         public int FloorsNumber;
+        public float FinalRotation = 70.0f;
 
         public Ladder[] ladders;
 
@@ -27,6 +28,7 @@ namespace Ship
             ShipManager.LadderCooldownTime = LadderCooldown;
             ShipManager.FloorsNumber = FloorsNumber;
             ShipManager.FloorHeight = Size.y / (float)FloorsNumber;
+            ShipManager.FinalRotation = FinalRotation;
             if (FloorsNumber == 0) Debug.LogError("Set number of floors!");
         }
     }
