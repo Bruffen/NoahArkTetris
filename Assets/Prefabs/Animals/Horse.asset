@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
   m_Name: Horse
   m_EditorClassIdentifier: 
-  animalType: 0
-  boatAnimator: {fileID: 0}
-  speedMultiplier: 1
+  animalType: 7
+  boatAnimator: {fileID: 9100000, guid: 2f7b9deb9d9cfd8498bb7ca41113d9bd, type: 2}
+  speedMultiplier: 3
   tetrisSprite: {fileID: 0}
-  tetrisColor: {r: 0, g: 0, b: 0, a: 0}
-  scoreValue: 0
-  shapeArray: 
-  height: 0
-  width: 0
+  tetrisColor: {r: 0.7647059, g: 0.7411765, b: 0.54509807, a: 0}
+  scoreValue: 10
+  shapeArray: 010101
+  height: 1
+  width: 3
