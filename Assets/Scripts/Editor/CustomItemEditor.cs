@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Item))]
+[CustomEditor(typeof(Animal))]
 public class CustomItemEditor : Editor
 {
-    private Item item;
+    private Animal item;
     private uint confirmedHeight;
     private uint confirmedWidth;
 
     private void OnEnable()
     {
-        item = (Item)target;
+        item = (Animal)target;
         confirmedHeight = item.height;
         confirmedWidth = item.width;
     }
