@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b077c12000ecb4a8d4c7ccc742d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
   m_Name: Pig
   m_EditorClassIdentifier: 
-  animalType: 10
-  boatAnimator: {fileID: 9100000, guid: cc4de9b4c93cae44882aa6b3b7a2ffdc, type: 2}
+  animalType: 0
+  boatAnimator: {fileID: 0}
   speedMultiplier: 1
   tetrisSprite: {fileID: 0}
-  tetrisColor: {r: 1, g: 0.5921569, b: 0.9019608, a: 0}
+  tetrisColor: {r: 0, g: 0, b: 0, a: 0}
   scoreValue: 0
-  shapeArray: 0101
-  height: 1
-  width: 2
+  shapeArray: 
+  height: 0
+  width: 0

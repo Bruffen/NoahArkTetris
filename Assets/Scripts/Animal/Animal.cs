@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Item")]
-public class Item : ScriptableObject {
+public class Animal : ScriptableObject {
     public AnimalType animalType;
     public RuntimeAnimatorController boatAnimator;
     [Range(0.1f, 5f)]

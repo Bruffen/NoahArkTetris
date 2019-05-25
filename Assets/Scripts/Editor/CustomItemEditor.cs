@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Item))]
+[CustomEditor(typeof(Animal))]
 public class CustomItemEditor : Editor
 {
-    private Item item;
+    private Animal item;
     private uint confirmedHeight;
     private uint confirmedWidth;
 
     private void OnEnable()
     {
-        item = (Item)target;
+        item = (Animal)target;
         confirmedHeight = item.height;
         confirmedWidth = item.width;
     }
@@ -75,7 +75,7 @@ public class CustomItemEditor : Editor
         if (item.shapeArray != null && item.shapeArray.Length > 0)
         {
             GUILayout.Label("Check boxes to draw the shape of the item.");
-            for (int y = (int)confirmedHeight - 1; y >= 0; y--)
+            for (int y = 0; y < (int)confirmedHeight; y++)
             {
                 GUILayout.BeginHorizontal();
                 for (int x = 0; x < confirmedWidth; x++)

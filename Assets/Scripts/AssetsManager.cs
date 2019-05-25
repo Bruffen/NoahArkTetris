@@ -7,7 +7,7 @@ public class AssetsManager : MonoBehaviour
 {
     public static AssetsManager Instance;
 
-    public Item[] allAnimals;
+    public Animal[] allAnimals;
 
     void Awake()
     {
@@ -20,8 +20,8 @@ public class AssetsManager : MonoBehaviour
         }
     }
 
-    public Item GetAnimalOfType(AnimalType type){
-        Item result = null;
+    public Animal GetAnimalOfType(AnimalType type){
+        Animal result = null;
         foreach (var a in allAnimals)
         {
             if(a.animalType == type)
@@ -32,7 +32,7 @@ public class AssetsManager : MonoBehaviour
         }
         return result;
     }
-    public Item GetRandom(){
+    public Animal GetRandom(){
         return allAnimals[UnityEngine.Random.Range(0, allAnimals.Length)];
     }
 }
