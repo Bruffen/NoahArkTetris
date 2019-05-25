@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slot : MonoBehaviour
+public class ItemWrapper : MonoBehaviour
 {
+
     public Item item;
-    public bool occupied = false;
 }

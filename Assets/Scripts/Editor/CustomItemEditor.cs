@@ -75,7 +75,7 @@ public class CustomItemEditor : Editor
         if (item.shapeArray != null && item.shapeArray.Length > 0)
         {
             GUILayout.Label("Check boxes to draw the shape of the item.");
-            for (int y = (int)confirmedHeight - 1; y >= 0; y--)
+            for (int y = 0; y < (int)confirmedHeight; y++)
             {
                 GUILayout.BeginHorizontal();
                 for (int x = 0; x < confirmedWidth; x++)
