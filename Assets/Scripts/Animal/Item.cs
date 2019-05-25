@@ -5,10 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Item")]
 public class Item : ScriptableObject {
     public AnimalType animalType;
-    public GameObject boatGameObject;
+    public RuntimeAnimatorController boatAnimator;
     [Range(0.1f, 5f)]
     public float speedMultiplier = 1.0f;
-    public GameObject tetrisGameObject;
+    public Sprite tetrisSprite;
+    public Color tetrisColor;
     public int scoreValue;
 
     [HideInInspector]
