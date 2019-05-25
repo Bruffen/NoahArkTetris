@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
   m_Name: Pig
   m_EditorClassIdentifier: 
-  animalType: 0
-  boatAnimator: {fileID: 0}
+  animalType: 10
+  boatAnimator: {fileID: 9100000, guid: cc4de9b4c93cae44882aa6b3b7a2ffdc, type: 2}
   speedMultiplier: 1
   tetrisSprite: {fileID: 0}
-  tetrisColor: {r: 0, g: 0, b: 0, a: 0}
+  tetrisColor: {r: 1, g: 0.5921569, b: 0.9019608, a: 0}
   scoreValue: 0
-  shapeArray: 
-  height: 0
-  width: 0
+  shapeArray: 0101
+  height: 1
+  width: 2
