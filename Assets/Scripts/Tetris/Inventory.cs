@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [HideInInspector]
     public List<Animal> animals = new List<Animal>();
@@ -44,6 +44,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Vector2 ped, Transform piece)
     {
         Vector2Int selectedSlot = GetSlot(ped);
+
 
         Animal item = piece.GetComponent<AnimalWrapper>().animal;
         Vector2Int itemCenter = GetCenterItem(item);
@@ -118,4 +119,31 @@ public class Inventory : MonoBehaviour
         return new Vector2Int(x,y);
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(DragAndDrop.dnd != null)
+        {
+            DragAndDrop.dnd.onBoat = true;
+            DragAndDrop.dnd.objBoat = this.gameObject;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (DragAndDrop.dnd != null)
+        {
+            DragAndDrop.dnd.onBoat = false;
+            DragAndDrop.dnd.objBoat = null;
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(DragAndDrop.dnd != null && DragAndDrop.dnd.objBoat == this)
+        {
+            DragAndDrop.dnd.onBoat = false;
+            DragAndDrop.dnd.objBoat = null;
+        }
+    }
 }
