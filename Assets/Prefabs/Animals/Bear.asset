@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
+  m_Name: Bear
+  m_EditorClassIdentifier: 
+  animalType: 1
+  boatAnimator: {fileID: 9100000, guid: 9afa7248f8b4beb47a133ef3acb4affb, type: 2}
+  speedMultiplier: 0.8
+  eyePositionLeft: {x: -0.4, y: 0.43}
+  tetrisSprite: {fileID: 21300000, guid: eff45c33c115736458dd95f58c6830d7, type: 3}
+  tetrisColor: {r: 0.23529412, g: 0.1254902, b: 0, a: 1}
+  scoreValue: 20
+  shapeArray: 010101010101010101
+  height: 3
+  width: 3

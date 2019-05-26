@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
+  m_Name: Elephant
+  m_EditorClassIdentifier: 
+  animalType: 6
+  boatAnimator: {fileID: 9100000, guid: 983ce5d4aa496534eb48e7311861715c, type: 2}
+  speedMultiplier: 1
+  eyePositionLeft: {x: -0.3, y: 0.02}
+  tetrisSprite: {fileID: 21300000, guid: cfcdfd332dd56ca439a9cf8c7fa59d6d, type: 3}
+  tetrisColor: {r: 0.427451, g: 0.8117648, b: 0.96470594, a: 1}
+  scoreValue: 20
+  shapeArray: 010101010101010101
+  height: 3
+  width: 3
