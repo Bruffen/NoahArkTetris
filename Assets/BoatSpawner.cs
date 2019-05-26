@@ -6,6 +6,7 @@ using UnityEngine;
 public class BoatSpawner : MonoBehaviour
 {
     public GameObject boatPrefab;
+    //UI
     public GameObject boatCountUI;
 
     //boat spawner limiter
@@ -21,6 +22,7 @@ public class BoatSpawner : MonoBehaviour
     {
         activeBoatNum = 0;
         totalSpawnedBoats = 0;
+        SpawnBoat();
     }
 
     private void Update()
