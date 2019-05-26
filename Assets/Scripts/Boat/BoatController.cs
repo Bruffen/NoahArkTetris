@@ -33,12 +33,12 @@ public class BoatController : MonoBehaviour
             if (currentTime <= 0)
                 timeOver = true;
         }
-        else
-        {
-            foreach (Animal a in inventory.animals)
-                GameManager.Instance.AddScore(a.scoreValue);
-            BoatSpawner.activeBoatNum--;
-            this.transform.parent.gameObject.SetActive(false);
-        }
+        else RemoveBoat();
+    }
+
+    public void RemoveBoat()
+    {
+        BoatSpawner.activeBoatNum--;
+        Destroy(this.transform.parent.gameObject);
     }
 }

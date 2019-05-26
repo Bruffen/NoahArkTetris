@@ -74,18 +74,8 @@ public class Inventory : MonoBehaviour
             img.color = s.item.tetrisColor;
         }
         newSlots.Clear();
-    }
-    public void ClearInventory()
-    {
-        animals.Clear();
-        foreach (Slot s in slots)
-        {
-            s.occupied = false;
-            s.item = null;
-            Image img = s.transform.GetComponent<Image>();
-            img.sprite = s.unoccupiedSprt;
-            img.color = Color.white;
-        }
+
+        GameManager.Instance.AddScore(item.scoreValue);
     }
     private bool CheckAvailabilityAnimal(Animal i, int x, int y)
     {
