@@ -5,9 +5,15 @@ using UnityEngine.EventSystems;
 
 public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
+    private AnimalWrapper wrapper;
     private bool selected = false;
     public bool onBoat = false;
     public GameObject objBoat;
+
+    void Awake()
+    {
+        wrapper = this.GetComponent<AnimalWrapper>();        
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -15,6 +21,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
         {
             Debug.Log("peepo");
             selected = true;
+            wrapper.Toogle();
         }
     }
 
@@ -31,8 +38,8 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
             Inventory inventory = objBoat.GetComponent<Inventory>();
 
             inventory.AddItem(eventData, this.gameObject.transform);
-
         }
+        wrapper.Toogle();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

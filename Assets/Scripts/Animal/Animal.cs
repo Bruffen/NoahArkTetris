@@ -8,6 +8,7 @@ public class Animal : ScriptableObject {
     public RuntimeAnimatorController boatAnimator;
     [Range(0.1f, 5f)]
     public float speedMultiplier = 1.0f;
+    public Vector2 eyePositionLeft;
     public Sprite tetrisSprite;
     public Color tetrisColor;
     public int scoreValue;

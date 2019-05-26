@@ -13,12 +13,14 @@ namespace Ship
         public float initialRotation = 0.0f;
         public float finalRotation;
 
+        private Vector3 initialPosition;
         private float direction = 1.0f;
         private float duration = 0.0f;
         private float time = 0.0f;
 
         void Start()
         {
+            initialPosition = transform.position;
             finalRotation = ShipManager.FinalRotation;
             if (IsRightSide)
             {
@@ -44,6 +46,21 @@ namespace Ship
                 Quaternion.Euler(0.0f, 0.0f, initialRotation),
                 Quaternion.Euler(0.0f, 0.0f, finalRotation),
                 time / duration);
+        }
+
+        public void Reset()
+        {
+            finalRotation = ShipManager.FinalRotation;
+            if (IsRightSide)
+            {
+                direction = -direction;
+            }
+
+            duration = GameManager.Instance.MatchTime;
+            time = 0.0f;
+
+            transform.position = initialPosition;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, initialRotation);
         }
     }
 }

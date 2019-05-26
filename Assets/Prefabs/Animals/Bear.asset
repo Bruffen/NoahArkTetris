@@ -15,6 +15,7 @@ MonoBehaviour:
   animalType: 1
   boatAnimator: {fileID: 9100000, guid: 9afa7248f8b4beb47a133ef3acb4affb, type: 2}
   speedMultiplier: 0.8
+  eyePositionLeft: {x: -0.4, y: 0.43}
   tetrisSprite: {fileID: 0}
   tetrisColor: {r: 0.23529412, g: 0.1254902, b: 0, a: 0}
   scoreValue: 20

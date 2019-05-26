@@ -42,7 +42,7 @@ namespace Mob
 
             stopTimer = 0.0f;
             seekTimer = 0.0f;
-            eyes = transform.Find("Eyes");
+            eyes = transform.GetChild(0).GetChild(0);
             sr.flipX = (MovementSpeed > 0.0f);
         }
 
@@ -148,7 +148,6 @@ namespace Mob
             Vector2 target = ladder.Position;
             float direction = Mathf.Sign(target.x - transform.localPosition.x);
             sr.flipX = direction == 1.0f;
-            Debug.Log(direction);
             float boatAngleClamped = Mathf.Clamp(Mathf.Abs(boatAngle), 0.0f, 90.0f) / (90.0f / MovementSpeed);
             transform.localPosition += new Vector3(Time.deltaTime * (MovementSpeed - boatAngleClamped), 0.0f) * direction;
 
