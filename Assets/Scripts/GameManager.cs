@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ship;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,9 +14,13 @@ public class GameManager : MonoBehaviour
     private static int playerScore;
 
     public GameObject boat;
+    public ShipMovement left;
+    public ShipMovement right;
     public GameObject water;
     public GameObject background;
     private Animator animator;
+
+    private GameObject oldBoat;
 
     void Awake()
     {
@@ -34,12 +39,15 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameStart(){
+        if(oldBoat != null){
+            Destroy(oldBoat);
+        }
         timeLeft = MatchTime;
         playerScore = 0;
         GameStateUpdate += GameRunningUpdate;
-        boat.SetActive(true);
         water.SetActive(true);
         background.SetActive(true);
+        oldBoat = Instantiate(boat, boat.transform.position, Quaternion.identity, this.transform);
     }
 
     private void GameRunningUpdate(){
