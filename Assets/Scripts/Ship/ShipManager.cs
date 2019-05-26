@@ -10,10 +10,11 @@ namespace Ship
     {
         public static Ladder[] Ladders;
         public static int LadderCooldownTime;
-        public static Vector2 Size;
+        public static BoxCollider2D Box;
         public static float FloorHeight;
         public static float FloorsNumber;
         public static float FinalRotation;
+        public static Vector2[] FloorPositions;
 
         public static void SetLadderClimbing(int index)
         {
