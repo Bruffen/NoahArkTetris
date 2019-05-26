@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public void AddItem(PointerEventData ped, Transform piece)
+    public void AddItem(Vector2 ped, Transform piece)
     {
         Vector2Int selectedSlot = GetSlot(ped);
 
@@ -91,12 +91,12 @@ public class Inventory : MonoBehaviour
         else return true;
     }
 
-    private Vector2Int GetSlot(PointerEventData ped)
+    private Vector2Int GetSlot(Vector2 ped)
     {
         RectTransform rt = transform as RectTransform;
         Vector2 localPos;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, ped.position, ped.pressEventCamera, out localPos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, ped,Camera.main, out localPos);
 
         localPos = (localPos + new Vector2(rt.sizeDelta.x / 2, -rt.sizeDelta.y / 2)) * new Vector2(1, -1);
 

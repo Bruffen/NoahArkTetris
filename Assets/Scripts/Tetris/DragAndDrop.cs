@@ -15,6 +15,17 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
         wrapper = this.GetComponent<AnimalWrapper>();        
     }
 
+
+    private void OnMouseDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("peepo");
+            selected = true;
+            wrapper.Toogle();
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (Input.GetMouseButtonDown(0))
@@ -32,14 +43,37 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(onBoat)
+        /*if(onBoat)
         {
             Vector2 mousePos = eventData.position;
             Inventory inventory = objBoat.GetComponent<Inventory>();
 
             inventory.AddItem(eventData, this.gameObject.transform);
+
+        }*/
+    }
+
+    private void Update()
+    {
+        if(selected)
+        {
+            Vector2 cursosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            this.transform.position = cursosPos;
         }
-        wrapper.Toogle();
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            selected = false;
+
+            if (onBoat)
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Inventory inventory = objBoat.GetComponent<Inventory>();
+
+                inventory.AddItem(Input.mousePosition, this.gameObject.transform);
+
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

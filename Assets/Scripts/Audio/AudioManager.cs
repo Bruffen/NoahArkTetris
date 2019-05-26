@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance;
+    public AudioMixer audio;
 
 	public Sound[] sounds;
 
@@ -41,4 +43,9 @@ public class AudioManager : MonoBehaviour
 		Sound s = Array.Find(sounds, sound => sound.name == name);
 		s.source.Stop();
 	}
+
+    public void SetVolume(float volume)
+    {
+        audio.SetFloat("Volume", volume);
+    }
 }
