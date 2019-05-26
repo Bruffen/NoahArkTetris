@@ -7,6 +7,9 @@ public class MenuManager : MonoBehaviour
 {
     public Button StartButton;
     public Button Options;
+
+    private bool onIntructions = false;
+    public GameObject Instructions;
     
     void Awake()
     {
@@ -16,5 +19,11 @@ public class MenuManager : MonoBehaviour
         Options.onClick.AddListener(() => {
             CanvasManager.Instance.SetState(GameState.Options);
         });
+    }
+
+    public void ActiveIntructions()
+    {
+        onIntructions = !onIntructions;
+        Instructions.SetActive(onIntructions);
     }
 }
