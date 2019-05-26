@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     private static int playerScore;
 
     public GameObject boat;
+    public GameObject water;
+    public GameObject background;
+    private Animator animator;
 
     void Awake()
     {
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
         else{
             Destroy(this.gameObject);
         }
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour
         playerScore = 0;
         GameStateUpdate += GameRunningUpdate;
         boat.SetActive(true);
+        water.SetActive(true);
+        background.SetActive(true);
     }
 
     private void GameRunningUpdate(){
@@ -41,11 +47,11 @@ public class GameManager : MonoBehaviour
 
         if(timeLeft <= 0){
             Debug.Log("TIMES UP");
-            CanvasManager.Instance.SetState(GameState.End);
+            animator.SetTrigger("end");
         }
     }
     private void GameEndUpdate(){
-
+            CanvasManager.Instance.SetState(GameState.End);
     }
 
     public void AddScore(int animalValue){
