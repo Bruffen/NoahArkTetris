@@ -20,7 +20,7 @@ namespace Ship
 
         void Start()
         {
-            initialPosition = transform.position;
+            initialPosition = transform.localPosition;
             finalRotation = ShipManager.FinalRotation;
             if (IsRightSide)
             {
@@ -59,7 +59,7 @@ namespace Ship
             duration = GameManager.Instance.MatchTime;
             time = 0.0f;
 
-            transform.position = initialPosition;
+            transform.localPosition = initialPosition;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, initialRotation);
         }
     }

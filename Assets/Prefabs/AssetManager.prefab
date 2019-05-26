@@ -45,7 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAnimals:
   - {fileID: 11400000, guid: 4c9a56c7cb5716e44aabedd065c13fb3, type: 2}
+  - {fileID: 11400000, guid: 8acfc5c1e5de2e7419912a86abc8005b, type: 2}
   - {fileID: 11400000, guid: 30cc31a8b4ac17e4e8e3acdb62d75cf7, type: 2}
+  - {fileID: 11400000, guid: a8007f972cb75834a9e59653f3b86cb8, type: 2}
+  - {fileID: 11400000, guid: fcf7b8827989b3042ba8bf1aaed827a8, type: 2}
+  - {fileID: 11400000, guid: 546376c46aecd524bba300e2efe20f00, type: 2}
   - {fileID: 11400000, guid: 78f833670da01c345bd000d6a235e9cc, type: 2}
   - {fileID: 11400000, guid: 65228dfe11377ab43959f49f2371f097, type: 2}
+  - {fileID: 11400000, guid: c0b0d579296113c48aeb35e53d3b1b1c, type: 2}
   - {fileID: 11400000, guid: 003cec4f6c8d3d94e94fe19a2632d47a, type: 2}

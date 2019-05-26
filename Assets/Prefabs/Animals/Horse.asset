@@ -16,7 +16,7 @@ MonoBehaviour:
   boatAnimator: {fileID: 9100000, guid: 2f7b9deb9d9cfd8498bb7ca41113d9bd, type: 2}
   speedMultiplier: 3
   eyePositionLeft: {x: -0.27, y: 0.7}
-  tetrisSprite: {fileID: 0}
+  tetrisSprite: {fileID: 21300000, guid: 31612b3dcd66d6742a0ca4c23b15366e, type: 3}
   tetrisColor: {r: 0.7647059, g: 0.7411765, b: 0.54509807, a: 0}
   scoreValue: 10
   shapeArray: 010101
