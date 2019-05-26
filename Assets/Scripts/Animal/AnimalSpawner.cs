@@ -1,23 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Mob;
 using UnityEngine;
 
 public class AnimalSpawner : MonoBehaviour
 {
-    public GameObject AnimalPrefab;
+    public AnimalWrapper AnimalTemplate;
     public int Total;
 
-    private List<GameObject> animals;
+    private List<AnimalWrapper> animals;
 
     void Start()
     {
-        animals = new List<GameObject>();
+        animals = new List<AnimalWrapper>();
         for (int i = 0; i < Total; i++)
         {
-            GameObject a = Instantiate(AnimalPrefab);
-            a.transform.localScale *= Random.Range(0.8f, 1.2f);
-            a.GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
-            a.transform.parent = this.transform;
+            Animal an = AssetsManager.Instance.GetRandom();
+            AnimalWrapper a = Instantiate(AnimalTemplate, Vector3.zero, Quaternion.identity, this.transform);
+            a.Init(an);
+            a.GetComponent<AIMovement>().MovementSpeed = an.speedMultiplier;
             animals.Add(a);
         }
     }

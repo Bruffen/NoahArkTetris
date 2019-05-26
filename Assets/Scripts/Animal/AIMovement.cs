@@ -10,30 +10,44 @@ namespace Mob
         public float MovementSpeed = 5.0f;
         public State CurrentState;
         public int currentFloor;
+        public SpriteRenderer sr;
 
         private Transform transformBoat;
         private float boatAngle;
         private float fallingDirection = 0.0f;
         private float fallingSpeed = 2.0f;
+        private Transform eyes;
+        private BoxCollider2D box;
         private float timeToWait;
         private float stopTimer;
         private float seekTimer;
+        private Vector2[] floorPositions;
 
         void Start()
         {
+            Vector2 size = sr.bounds.size;
+
+            box = ShipManager.Box;
+            floorPositions = ShipManager.FloorPositions;
+
             CurrentState = State.Moving;
             transformBoat = transform.parent.transform;
             currentFloor = Random.Range(0, ShipManager.Ladders.Length + 1);
             transform.localPosition = new Vector2(
-                //TODO 0.5f replace with animal size
-                Random.Range(-(ShipManager.Size.x / 2.0f) + 0.5f, (ShipManager.Size.x / 2.0f) - 0.5f),
-                -(ShipManager.Size.y / 2.0f) + 0.5f + currentFloor * ShipManager.FloorHeight);
+                Random.Range(
+                    -(box.size.x / 2.0f) + box.offset.x,
+                    box.size.x / 2.0f) + box.offset.x,
+            /*box.bounds.center.y - (box.size.y / 2.0f) + currentFloor * ShipManager.FloorHeight);*/
+                    floorPositions[currentFloor].y);
+
             stopTimer = 0.0f;
             seekTimer = 0.0f;
+            eyes = transform.Find("Eyes");
         }
 
         void Update()
         {
+
             boatAngle = transformBoat.rotation.eulerAngles.z;
             if (boatAngle > 180)
                 boatAngle = transformBoat.rotation.eulerAngles.z - 360.0f;
@@ -73,7 +87,7 @@ namespace Mob
          */
         void Movement()
         {
-            float bound = ShipManager.Size.x / 2.0f;
+            float bound = box.size.x / 2.0f;
 
             //Clamp to range [0, MovementSpeed]
             float boatAngleClamped = Mathf.Clamp(Mathf.Abs(boatAngle), 0.0f, 90.0f) / (90.0f / MovementSpeed);
@@ -82,6 +96,8 @@ namespace Mob
             if (transform.localPosition.x > bound || transform.localPosition.x < -bound)
             {
                 MovementSpeed = -MovementSpeed;
+                sr.flipX = (MovementSpeed > 0.0f);
+
                 transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -bound, bound), transform.localPosition.y);
             }
         }
@@ -109,7 +125,10 @@ namespace Mob
             {
                 CurrentState = State.Moving;
                 if (Random.Range(0, 2) == 1)
+                {
                     MovementSpeed = -MovementSpeed;
+                    sr.flipX = !sr.flipX;
+                }
             }
         }
 
@@ -128,6 +147,7 @@ namespace Mob
             Ladder ladder = ShipManager.Ladders[currentFloor];
             Vector2 target = ladder.Position;
             float direction = Mathf.Sign(target.x - transform.localPosition.x);
+            sr.flipX = direction == -1.0f;
             float boatAngleClamped = Mathf.Clamp(Mathf.Abs(boatAngle), 0.0f, 90.0f) / (90.0f / MovementSpeed);
             transform.localPosition += new Vector3(Time.deltaTime * (MovementSpeed - boatAngleClamped), 0.0f) * direction;
 
@@ -164,7 +184,7 @@ namespace Mob
         void Climb()
         {
             transform.localPosition += Vector3.up * Time.deltaTime * 2.0f;
-            if (transform.localPosition.y > -(ShipManager.Size.y / 2.0f) + 0.5f + currentFloor * ShipManager.FloorHeight)
+            if (transform.localPosition.y > floorPositions[currentFloor].y)
             {
                 CurrentState = State.Moving;
             }
@@ -172,18 +192,20 @@ namespace Mob
 
         void CheckForFall()
         {
-            Debug.Log(ShipManager.FinalRotation);
             if (boatAngle >= ShipManager.FinalRotation)
             {
                 fallingDirection = -1.0f;
                 MovementSpeed = -0.1f;
                 CurrentState = State.Falling;
+                eyes.gameObject.SetActive(true);
             }
             else if (boatAngle <= -ShipManager.FinalRotation)
             {
                 fallingDirection = 1.0f;
+                sr.flipX = true;
                 MovementSpeed = 0.1f;
                 CurrentState = State.Falling;
+                eyes.gameObject.SetActive(true);
             }
         }
 

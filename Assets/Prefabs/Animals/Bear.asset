@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177b338fcf399324fa92efd5ef483f1c, type: 3}
   m_Name: Bear
   m_EditorClassIdentifier: 
-  animalType: 0
-  boatAnimator: {fileID: 0}
-  speedMultiplier: 1
+  animalType: 1
+  boatAnimator: {fileID: 9100000, guid: 9afa7248f8b4beb47a133ef3acb4affb, type: 2}
+  speedMultiplier: 0.8
   tetrisSprite: {fileID: 0}
-  tetrisColor: {r: 1, g: 0, b: 0, a: 1}
-  scoreValue: 0
+  tetrisColor: {r: 0.23529412, g: 0.1254902, b: 0, a: 0}
+  scoreValue: 20
   shapeArray: 010101010101010101
   height: 3
   width: 3
