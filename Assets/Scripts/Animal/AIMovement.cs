@@ -43,11 +43,11 @@ namespace Mob
             stopTimer = 0.0f;
             seekTimer = 0.0f;
             eyes = transform.Find("Eyes");
+            sr.flipX = (MovementSpeed > 0.0f);
         }
 
         void Update()
         {
-
             boatAngle = transformBoat.rotation.eulerAngles.z;
             if (boatAngle > 180)
                 boatAngle = transformBoat.rotation.eulerAngles.z - 360.0f;
@@ -88,6 +88,7 @@ namespace Mob
         void Movement()
         {
             float bound = box.size.x / 2.0f;
+            sr.flipX = (MovementSpeed > 0.0f);
 
             //Clamp to range [0, MovementSpeed]
             float boatAngleClamped = Mathf.Clamp(Mathf.Abs(boatAngle), 0.0f, 90.0f) / (90.0f / MovementSpeed);
@@ -96,7 +97,6 @@ namespace Mob
             if (transform.localPosition.x > bound || transform.localPosition.x < -bound)
             {
                 MovementSpeed = -MovementSpeed;
-                sr.flipX = (MovementSpeed > 0.0f);
 
                 transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -bound, bound), transform.localPosition.y);
             }
@@ -147,7 +147,8 @@ namespace Mob
             Ladder ladder = ShipManager.Ladders[currentFloor];
             Vector2 target = ladder.Position;
             float direction = Mathf.Sign(target.x - transform.localPosition.x);
-            sr.flipX = direction == -1.0f;
+            sr.flipX = direction == 1.0f;
+            Debug.Log(direction);
             float boatAngleClamped = Mathf.Clamp(Mathf.Abs(boatAngle), 0.0f, 90.0f) / (90.0f / MovementSpeed);
             transform.localPosition += new Vector3(Time.deltaTime * (MovementSpeed - boatAngleClamped), 0.0f) * direction;
 
@@ -187,6 +188,7 @@ namespace Mob
             if (transform.localPosition.y > floorPositions[currentFloor].y)
             {
                 CurrentState = State.Moving;
+                sr.flipX = (MovementSpeed > 0.0f);
             }
         }
 
