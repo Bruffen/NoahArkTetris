@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.Play("Music");
+    }
+
     void Update()
     {
         GameStateUpdate?.Invoke();

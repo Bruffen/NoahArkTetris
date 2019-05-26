@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Mob;
 
-public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
+public class DragAndDrop : MonoBehaviour
 {
     private AnimalWrapper wrapper;
+    private AIMovement movement;
     private bool selected = false;
     public bool onBoat = false;
     public GameObject objBoat;
 
+    public static DragAndDrop dnd;
+
     void Awake()
     {
-        wrapper = this.GetComponent<AnimalWrapper>();        
+        wrapper = this.GetComponent<AnimalWrapper>();
+        movement = this.GetComponent<AIMovement>();
     }
-
 
     private void OnMouseDown()
     {
@@ -23,71 +27,44 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
             Debug.Log("peepo");
             selected = true;
             wrapper.Toogle();
+            dnd = this;
+            movement.enabled = false;
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    private void OnMouseUp()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0) && this == dnd)
         {
             Debug.Log("peepo");
             selected = true;
             wrapper.Toogle();
+            dnd = null;
+            movement.enabled = true;
         }
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        this.transform.position = new Vector3(eventData.position.x, eventData.position.y, 0);
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        /*if(onBoat)
-        {
-            Vector2 mousePos = eventData.position;
-            Inventory inventory = objBoat.GetComponent<Inventory>();
-
-            inventory.AddItem(eventData, this.gameObject.transform);
-
-        }*/
     }
 
     private void Update()
     {
-        if(selected)
+        if (selected)
         {
             Vector2 cursosPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = cursosPos;
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             selected = false;
 
             if (onBoat)
             {
-                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Inventory inventory = objBoat.GetComponent<Inventory>();
-
-                inventory.AddItem(Input.mousePosition, this.gameObject.transform);
-
+                inventory.AddItem(Camera.main.WorldToScreenPoint(Input.mousePosition), this.gameObject.transform);
+                Destroy(this.gameObject);
             }
-        }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Boat")
-        {
-            objBoat = other.gameObject;
-            onBoat = true;
-        }
-    }
+            dnd = null;
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Boat")
-            onBoat = false;
+        }
     }
 }
