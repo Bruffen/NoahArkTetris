@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    List<Animal> animals = new List<Animal>();
+    [HideInInspector]
+    public List<Animal> animals = new List<Animal>();
     public Vector2Int size;
     public Slot[,] slots;
     public GameObject slotPrefab;
@@ -18,7 +19,6 @@ public class Inventory : MonoBehaviour
     private GridLayoutGroup grid;
 
     Rect rect;
-
 
     void Start()
     {
@@ -41,17 +41,12 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-    public GameObject test;
-    public RectTransform canvas;
     public void AddItem(PointerEventData ped, Transform piece)
     {
         Vector2Int selectedSlot = GetSlot(ped);
-        Debug.Log(selectedSlot);
 
         Animal item = piece.GetComponent<AnimalWrapper>().animal;
         Vector2Int itemCenter = GetCenterItem(item);
-        Debug.Log(itemCenter);
 
         List<Slot> newSlots = new List<Slot>();
         for (int y = 0; y < item.height; y++)
@@ -63,14 +58,9 @@ public class Inventory : MonoBehaviour
                 if (CheckAvailabilityAnimal(item, x, y))
                 {
                     if (CheckForAvailability(indexX, indexY))
-                    {
                         newSlots.Add(slots[indexX, indexY]);
-                    }
                     else
-                    {
-                        Debug.Log("no fit marh dewd");
                         return;
-                    }
                 }
             }
         }
@@ -79,37 +69,37 @@ public class Inventory : MonoBehaviour
         {
             s.occupied = true;
             s.item = item;
-            s.transform.GetComponent<Image>().color = Color.red;
+            Image img = s.transform.GetComponent<Image>();
+            img.sprite = s.occupiedSprt;
+            img.color = s.item.tetrisColor;
         }
         newSlots.Clear();
+    }
+    public void ClearInventory()
+    {
+        animals.Clear();
+        foreach (Slot s in slots)
+        {
+            s.occupied = false;
+            s.item = null;
+            Image img = s.transform.GetComponent<Image>();
+            img.sprite = s.unoccupiedSprt;
+            img.color = Color.white;
+        }
     }
     private bool CheckAvailabilityAnimal(Animal i, int x, int y)
     {
         if (i.shapeArray[x + y * i.width])
-        {
-            Debug.Log($"Succ animal grid : {x},{y}");
             return true;
-        }
-        else
-        {
-            Debug.Log($"Oof animal grid : {x},{y} width: {i.width}; Using: {!i.shapeArray[x + y * i.width]}");
-            return false;
-        }
+        else return false;
+
     }
     private bool CheckForAvailability(int x, int y)
     {
         if (x < 0 || x >= size.x || y < 0 || y >= size.y || slots[x, y].occupied)
-        {
-            Debug.Log($"slot : {x},{y}");
             return false;
-        }
-        else
-        {
-            Debug.Log($"slot : {x},{y}");
-            return true;
-        }
+        else return true;
     }
-
 
     private Vector2Int GetSlot(PointerEventData ped)
     {
@@ -123,7 +113,6 @@ public class Inventory : MonoBehaviour
         Vector2 selectedSlotCoords = (localPos * size) / (rt.sizeDelta);
         return new Vector2Int((int)Mathf.Floor(selectedSlotCoords.x), (int)Mathf.Floor(selectedSlotCoords.y));
     }
-
     public Vector2Int GetCenterItem(Animal item)
     {
         int x, y;
@@ -138,4 +127,5 @@ public class Inventory : MonoBehaviour
 
         return new Vector2Int(x,y);
     }
+
 }

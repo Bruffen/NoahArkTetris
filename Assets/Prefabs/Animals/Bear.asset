@@ -16,7 +16,7 @@ MonoBehaviour:
   boatAnimator: {fileID: 0}
   speedMultiplier: 1
   tetrisSprite: {fileID: 0}
-  tetrisColor: {r: 0, g: 0, b: 0, a: 0}
+  tetrisColor: {r: 1, g: 0, b: 0, a: 1}
   scoreValue: 0
   shapeArray: 010101010101010101
   height: 3
