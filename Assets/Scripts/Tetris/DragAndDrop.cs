@@ -11,11 +11,8 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("peepo");
-            selected = true;
-        }
+        Debug.Log("peepo");
+        selected = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -25,7 +22,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(onBoat)
+        if (onBoat)
         {
             Vector2 mousePos = eventData.position;
             Inventory inventory = objBoat.GetComponent<Inventory>();
