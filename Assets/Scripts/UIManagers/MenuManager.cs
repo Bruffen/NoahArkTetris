@@ -20,6 +20,10 @@ public class MenuManager : MonoBehaviour
             CanvasManager.Instance.SetState(GameState.Options);
         });
     }
+    private void Start()
+    {
+        AudioManager.Instance.Play("Menu");
+    }
 
     public void ActiveIntructions()
     {

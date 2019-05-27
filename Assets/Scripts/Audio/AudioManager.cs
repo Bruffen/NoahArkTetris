@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance;
-    public AudioMixer audio;
+    public new AudioMixer audio;
 
 	public Sound[] sounds;
 
@@ -23,13 +23,14 @@ public class AudioManager : MonoBehaviour
 
 		foreach (Sound s in sounds)
 		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
+			s.source = this.gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
 
 			s.source.volume = s.volume;
-			s.source.pitch = s.pitch;
+			s.source.pitch = s.pitch; // pitch minimo tem de ser 1
 			s.source.loop = s.loop;
-		}
+            s.source.outputAudioMixerGroup = audio.FindMatchingGroups("Master")[0];
+        }
 	}
 
 	public void Play(string name)
