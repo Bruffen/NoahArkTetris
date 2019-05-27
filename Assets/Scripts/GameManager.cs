@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject water;
     public GameObject background;
     private Animator animator;
+    public BoatSpawner boatSpawner;
 
     private GameObject oldBoat;
 
@@ -33,18 +34,16 @@ public class GameManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        AudioManager.Instance.Play("Music");
-    }
-
     void Update()
     {
         GameStateUpdate?.Invoke();
     }
 
     public void GameStart(){
-        if(oldBoat != null){
+
+        AudioManager.Instance.Stop("Menu");
+        AudioManager.Instance.Play("Jogo");
+        if (oldBoat != null){
             Destroy(oldBoat);
         }
         timeLeft = MatchTime;
@@ -53,6 +52,9 @@ public class GameManager : MonoBehaviour
         water.SetActive(true);
         background.SetActive(true);
         oldBoat = Instantiate(boat, boat.transform.position, Quaternion.identity, this.transform);
+
+
+        boatSpawner.ResetValues();
     }
 
     private void GameRunningUpdate(){
@@ -62,8 +64,17 @@ public class GameManager : MonoBehaviour
             Debug.Log("TIMES UP");
             animator.SetTrigger("end");
         }
+
+        //no more boats coming
+        if(boatSpawner.totalSpawnedBoats >= boatSpawner.MaxBoatsToSpawn && BoatSpawner.activeBoatNum <= 0)
+        {
+            Debug.Log("No More Boats");
+            animator.SetTrigger("end");
+        }
     }
     private void GameEndUpdate(){
+        AudioManager.Instance.Stop("Jogo");
+        AudioManager.Instance.Play("EndGame");
             CanvasManager.Instance.SetState(GameState.End);
     }
 

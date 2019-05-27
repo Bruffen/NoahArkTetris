@@ -24,7 +24,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("peepo");
+            AudioManager.Instance.Play("Drag");
             selected = true;
             wrapper.Toogle();
             dnd = this;
@@ -54,6 +54,7 @@ public class DragAndDrop : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            AudioManager.Instance.Play("Drop");
             selected = false;
 
             if (onBoat)
