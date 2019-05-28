@@ -20,8 +20,16 @@ public class DragAndDrop : MonoBehaviour
         movement = this.GetComponent<AIMovement>();
     }
 
+    private void OnMouseEnter() {
+        Debug.Log("enter");
+    }
+    private void OnMouseExit() {
+        Debug.Log("left");
+    }
+
     private void OnMouseDown()
     {
+        Debug.Log("this");
         if (Input.GetMouseButtonDown(0))
         {
             CameraZoom.Instance.enabled = false;
