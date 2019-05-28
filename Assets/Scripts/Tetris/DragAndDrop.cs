@@ -25,6 +25,7 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CameraZoom.Instance.enabled = false;
+            this.wrapper.tetrisObject.transform.localScale = Vector3.one * CameraZoom.Instance.tetrisScaleValue;
             AudioManager.Instance.Play("Drag");
             selected = true;
             wrapper.Toogle();

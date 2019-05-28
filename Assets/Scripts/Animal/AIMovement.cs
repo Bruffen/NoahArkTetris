@@ -199,6 +199,8 @@ namespace Mob
                 MovementSpeed = -0.1f;
                 CurrentState = State.Falling;
                 eyes.gameObject.SetActive(true);
+                Animal animal = GetComponent<AnimalWrapper>().animal;
+                eyes.gameObject.transform.localPosition = new Vector2(-animal.eyePositionLeft.x, animal.eyePositionLeft.y);
             }
             else if (boatAngle <= -ShipManager.FinalRotation)
             {
@@ -207,6 +209,8 @@ namespace Mob
                 MovementSpeed = 0.1f;
                 CurrentState = State.Falling;
                 eyes.gameObject.SetActive(true);
+                Animal animal = GetComponent<AnimalWrapper>().animal;
+                eyes.gameObject.transform.localPosition = animal.eyePositionLeft;
             }
         }
 

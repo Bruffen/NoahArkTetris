@@ -10,6 +10,7 @@ public class CameraZoom : MonoBehaviour
     public float MinZoom;
     public float MaxZoom;
     public float MouseSensitivity = 20.0f;
+    public float tetrisScaleValue;
 
     private Camera cam;
     private Vector2 botLeftCorner;
@@ -29,6 +30,7 @@ public class CameraZoom : MonoBehaviour
         cam = Camera.main;
         botLeftCorner = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
         topRightCorner = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
+        tetrisScaleValue = 1;
     }
 
     void Update()
@@ -56,6 +58,7 @@ public class CameraZoom : MonoBehaviour
 
         cam.orthographicSize -= amount;
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, MinZoom, MaxZoom);
+        tetrisScaleValue = cam.orthographicSize / MaxZoom;
     }
 
     void DragCamera()
