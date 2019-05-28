@@ -218,7 +218,6 @@ GameObject:
   - component: {fileID: 1662794466317445716}
   - component: {fileID: 1374944}
   - component: {fileID: 1063226803}
-  - component: {fileID: 2748021850978024284}
   - component: {fileID: 1195461799416735390}
   m_Layer: 0
   m_Name: Animal
@@ -288,32 +287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBoat: 0
   objBoat: {fileID: 0}
---- !u!61 &2748021850978024284
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662794466317445715}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &1195461799416735390
 Rigidbody2D:
   serializedVersion: 4

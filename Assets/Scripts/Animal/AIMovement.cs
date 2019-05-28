@@ -113,6 +113,10 @@ namespace Mob
             MovementSpeed += (Time.deltaTime * fallingDirection) * boatAngleClamped;
             MovementSpeed *= (1.0f + fallingSpeed * Time.deltaTime);
             transform.localPosition += new Vector3(Time.deltaTime * MovementSpeed, 0.0f);
+
+            if(transform.position.y < -100){
+                Destroy(this.gameObject);
+            }
         }
 
         /**
@@ -200,7 +204,13 @@ namespace Mob
                 CurrentState = State.Falling;
                 eyes.gameObject.SetActive(true);
                 Animal animal = GetComponent<AnimalWrapper>().animal;
-                eyes.gameObject.transform.localPosition = new Vector2(-animal.eyePositionLeft.x, animal.eyePositionLeft.y);
+             
+                if(sr.flipX)
+                    eyes.gameObject.transform.localPosition = new Vector2(-animal.eyePositionLeft.x, animal.eyePositionLeft.y);                   
+                else
+                    eyes.gameObject.transform.localPosition = animal.eyePositionLeft;
+
+                eyes.GetComponent<SpriteRenderer>().flipX = sr.flipX;
             }
             else if (boatAngle <= -ShipManager.FinalRotation)
             {
@@ -210,7 +220,11 @@ namespace Mob
                 CurrentState = State.Falling;
                 eyes.gameObject.SetActive(true);
                 Animal animal = GetComponent<AnimalWrapper>().animal;
-                eyes.gameObject.transform.localPosition = animal.eyePositionLeft;
+                if(sr.flipX)
+                    eyes.gameObject.transform.localPosition = new Vector2(-animal.eyePositionLeft.x, animal.eyePositionLeft.y);                   
+                else
+                    eyes.gameObject.transform.localPosition = animal.eyePositionLeft;
+                eyes.GetComponent<SpriteRenderer>().flipX = sr.flipX;
             }
         }
 

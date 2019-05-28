@@ -533,12 +533,12 @@ PrefabInstance:
     - target: {fileID: 6239314080153502601, guid: 770469015cbd33d4ab20bc48c01d9c72,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -200.00003
+      value: -200.00008
       objectReference: {fileID: 0}
     - target: {fileID: 283938142329236412, guid: 770469015cbd33d4ab20bc48c01d9c72,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.00003
+      value: 200.00008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770469015cbd33d4ab20bc48c01d9c72, type: 3}
@@ -624,11 +624,6 @@ PrefabInstance:
       propertyPath: animalCount
       value: 
       objectReference: {fileID: 946801571}
-    - target: {fileID: 5794119540870305565, guid: 92e88b20332b9fd4e84f8bde2ed78e37,
-        type: 3}
-      propertyPath: MatchTime
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e88b20332b9fd4e84f8bde2ed78e37, type: 3}
 --- !u!1001 &6031941647601971174
