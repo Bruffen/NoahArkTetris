@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             for (int x = 0; x < size.x; x++)
             {
-                Vector2 pos = new Vector2((rect.position.x - bounds.x / 2) + sWidth * x, (rect.position.y + bounds.y / 2) + sHeight * y);
+                Vector3 pos = new Vector3((rect.position.x - bounds.x / 2) + sWidth * x, (rect.position.y + bounds.y / 2) + sHeight * y, this.transform.position.z);
                 GameObject s = Instantiate(slotPrefab, pos, Quaternion.identity, this.transform);
                 slots[x, y] = s.GetComponent<Slot>();
             }
@@ -97,7 +97,7 @@ public class Inventory : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         RectTransform rt = transform as RectTransform;
         Vector2 localPos;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, ped,Camera.main, out localPos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, ped, Camera.main, out localPos);
 
         localPos = (localPos + new Vector2(rt.sizeDelta.x / 2, -rt.sizeDelta.y / 2)) * new Vector2(1, -1);
 

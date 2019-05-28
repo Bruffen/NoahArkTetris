@@ -24,6 +24,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            CameraZoom.Instance.enabled = false;
             AudioManager.Instance.Play("Drag");
             selected = true;
             wrapper.Toogle();
@@ -36,6 +37,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && this == dnd)
         {
+            CameraZoom.Instance.enabled = true;
             Debug.Log("peepo");
             selected = true;
             wrapper.Toogle();
@@ -60,7 +62,7 @@ public class DragAndDrop : MonoBehaviour
             if (onBoat)
             {
                 Inventory inventory = objBoat.GetComponent<Inventory>();
-                inventory.AddItem(Camera.main.WorldToScreenPoint(Input.mousePosition), this.gameObject.transform);
+                inventory.AddItem(Input.mousePosition, this.gameObject.transform);
                 Destroy(this.gameObject);
             }
 

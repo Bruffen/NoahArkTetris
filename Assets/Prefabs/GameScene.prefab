@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 607636163600153787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 48, y: 4.8, z: 1}
+  m_LocalScale: {x: 48, y: 4.7, z: 1}
   m_Children: []
   m_Father: {fileID: 6010203536401079401}
   m_RootOrder: 0
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3597503005464362790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.84, z: -8}
+  m_LocalPosition: {x: 0, y: -1, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 264855706014197780}
@@ -257,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5794119540668718826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5794119540870305564}
@@ -321,7 +321,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5794119540870305564}
   - component: {fileID: 5794119540870305565}
-  - component: {fileID: 1912387097754885269}
   m_Layer: 0
   m_Name: GameScene
   m_TagString: Untagged
@@ -357,28 +356,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3cd762dda8e6254fbe9126dc56502e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MatchTime: 60
+  MatchTime: 56
   boat: {fileID: 5916383573374521048, guid: 9c7f4f937c2dd304cb13806e3415248b, type: 3}
   left: {fileID: 0}
   right: {fileID: 0}
   water: {fileID: 3597503005464362790}
   background: {fileID: 5794119540668718826}
---- !u!95 &1912387097754885269
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5794119540870305555}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a172868aaee31014db4a13e0f9431360, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  boatSpawner: {fileID: 0}
+  score: {fileID: 0}
+  animalCount: {fileID: 0}

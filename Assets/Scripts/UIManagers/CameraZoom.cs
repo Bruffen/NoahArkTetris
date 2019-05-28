@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class CameraZoom : MonoBehaviour
 {
+    public static CameraZoom Instance;
+
     public float MinZoom;
     public float MaxZoom;
     public float MouseSensitivity = 20.0f;
@@ -17,6 +19,13 @@ public class CameraZoom : MonoBehaviour
 
     void Start()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         cam = Camera.main;
         botLeftCorner = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
         topRightCorner = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
