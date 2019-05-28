@@ -41,4 +41,8 @@ public class BoatController : MonoBehaviour
         BoatSpawner.activeBoatNum--;
         Destroy(this.transform.parent.gameObject);
     }
+
+    private void OnDisable() {
+        RemoveBoat();
+    }
 }

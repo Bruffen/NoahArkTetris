@@ -19,6 +19,6 @@ MonoBehaviour:
   tetrisSprite: {fileID: 21300000, guid: 31612b3dcd66d6742a0ca4c23b15366e, type: 3}
   tetrisColor: {r: 0.7647059, g: 0.7411765, b: 0.54509807, a: 1}
   scoreValue: 10
-  shapeArray: 010101
-  height: 1
+  shapeArray: 010100010101
+  height: 2
   width: 3

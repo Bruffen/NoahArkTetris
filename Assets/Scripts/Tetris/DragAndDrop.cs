@@ -19,12 +19,13 @@ public class DragAndDrop : MonoBehaviour
         wrapper = this.GetComponent<AnimalWrapper>();
         movement = this.GetComponent<AIMovement>();
     }
-
     private void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("peepo");
+            CameraZoom.Instance.enabled = false;
+            this.wrapper.tetrisObject.transform.localScale = Vector3.one * CameraZoom.Instance.tetrisScaleValue;
+            AudioManager.Instance.Play("Drag");
             selected = true;
             wrapper.Toogle();
             dnd = this;
@@ -36,6 +37,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && this == dnd)
         {
+            CameraZoom.Instance.enabled = true;
             Debug.Log("peepo");
             selected = true;
             wrapper.Toogle();
@@ -54,12 +56,13 @@ public class DragAndDrop : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            AudioManager.Instance.Play("Drop");
             selected = false;
 
             if (onBoat)
             {
                 Inventory inventory = objBoat.GetComponent<Inventory>();
-                inventory.AddItem(Camera.main.WorldToScreenPoint(Input.mousePosition), this.gameObject.transform);
+                inventory.AddItem(Input.mousePosition, this.gameObject.transform);
                 Destroy(this.gameObject);
             }
 

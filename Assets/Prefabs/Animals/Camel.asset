@@ -17,8 +17,8 @@ MonoBehaviour:
   speedMultiplier: 1
   eyePositionLeft: {x: -0.28, y: 0.71}
   tetrisSprite: {fileID: 21300000, guid: d54ca83813a806a40b8b4d989075db77, type: 3}
-  tetrisColor: {r: 0, g: 0, b: 0, a: 1}
+  tetrisColor: {r: 1, g: 0.9490197, b: 0, a: 1}
   scoreValue: 30
-  shapeArray: 000100010101
+  shapeArray: 010101000100
   height: 2
   width: 3

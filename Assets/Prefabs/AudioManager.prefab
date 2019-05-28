@@ -43,34 +43,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c9c4e6cef3a444285f25e85171fcc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 24100000, guid: f1250d3fb860c454a98fd1dcebad0eac, type: 2}
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Menu
+    clip: {fileID: 8300000, guid: 0722d36c652376b4c83b87236c4a4709, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Jogo
+    clip: {fileID: 8300000, guid: 2fbf6c69354abb04983f92f28850a245, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: EndGame
+    clip: {fileID: 8300000, guid: 343d11da824d7e6468a828125aaf23d2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Drag
+    clip: {fileID: 8300000, guid: 66e945b97e1705f4dbe1447f15b0e50e, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Drop
+    clip: {fileID: 8300000, guid: 59db97dafa0bd2548b2c7d0659095263, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}

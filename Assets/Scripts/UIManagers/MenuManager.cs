@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public Button StartButton;
     public Button Options;
+    public Button EndButton;
 
     private bool onIntructions = false;
     public GameObject Instructions;
@@ -18,6 +19,9 @@ public class MenuManager : MonoBehaviour
         });
         Options.onClick.AddListener(() => {
             CanvasManager.Instance.SetState(GameState.Options);
+        });
+        EndButton.onClick.AddListener(() => {
+            Application.Quit();
         });
     }
 

@@ -11,6 +11,7 @@ public class EndManager : MonoBehaviour
     {
         FinishButton.onClick.AddListener(()=>{
             CanvasManager.Instance.SetState(GameState.Menu);
+            AudioManager.Instance.Stop("EndGame");
         });
     }
 }
